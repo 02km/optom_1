@@ -7,11 +7,10 @@
     margin-top: 50px;
     background-color: #f1f1f1;
     padding-top: 0;
-}
-.intro-container1{
-    padding-top: 50px;
+    color: #333333;
 
 }
+
 .intro-img {
     flex: 1;
     margin-right: 20px; /* Adjust as needed */
@@ -97,7 +96,8 @@ body {
 .featured h2 {
     text-align: center;
     font-weight: bold;
-    text-decoration: underline;
+    color: #333333;
+
 }
 .images {
     display: flex;
@@ -152,6 +152,49 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow on hover */
 }
 
+
+.container1  {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.form-container1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    margin-bottom: 5px;
+    color: #333;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.form-group textarea {
+    resize: vertical;
+}
+.form-group button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
 /* Responsive styles */
 @media screen and (max-width: 768px) {
     .image {
@@ -164,5 +207,74 @@ body {
 
     .images {
         justify-content: center; /* Center the images */
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+#bookingForm {
+    background: #f1f1f1;
+    margin: 0 auto;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#bookingForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#bookingForm input[type="text"],
+#bookingForm input[type="email"],
+#bookingForm input[type="tel"],
+#bookingForm input[type="date"],
+#bookingForm input[type="time"],
+#bookingForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+#bookingForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#bookingForm button:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+    #bookingForm {
+        padding: 15px;
+    }
+
+    #bookingForm input[type="text"],
+    #bookingForm input[type="email"],
+    #bookingForm input[type="tel"],
+    #bookingForm input[type="date"],
+    #bookingForm input[type="time"],
+    #bookingForm select {
+        padding: 8px;
+    }
+
+    #bookingForm button {
+        padding: 12px;
+        font-size: 16px;
     }
 }

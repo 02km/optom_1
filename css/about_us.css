@@ -1,0 +1,141 @@
+/* Existing CSS */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.background{
+    background: #CF8E80;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+}
+.about_us {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.team img {
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    vertical-align: middle;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.contact-info a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cta button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cta button:hover {
+    background-color: #45a049;
+}
+
+/* Gallery CSS */
+.gallery {
+    margin: 40px 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .about_us {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .team {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .team img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    h1, h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta button {
+        width: 100%;
+        font-size: 14px;
+    }
+}

@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Header -->
 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Product Management</title>
 
-    <!-- Link to your external CSS file -->
+    <!-- CSS -->
     <link href="styles.css" rel="stylesheet">
-    <link href="footer.css" rel="stylesheet">
-    <link href="home.css" rel="stylesheet">
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
 
-
+    <link rel="stylesheet" href="myStyle.css">
 </head>
+
 <body>
+<!-- Header Section -->
 <header class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 border-bottom header-visible">
     <!-- Logo and Header Text -->
-   <!-- <div class="logo header-text"><b>Tolksdorf Optometry</b></div> -->
     <div class="logo">
         <img src="images/Logo%20header.png" alt="Tolksdorf Optometry Logo" class="logo-img">
     </div>
 
-
     <!-- Navigation -->
     <div class="nav-center">
-
         <nav class="nav-container">
             <ul class="nav">
                 <li class="nav-item"><a href="#" class="nav-link active" aria-current="page"><b><u>Home</u></b></a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><b><u>About us</u></b></a></li>
+                <li class="nav-item"><a href="#" class="nav-link active"><b><u>About us</u></b></a></li>
                 <!-- Dropdown Services item -->
                 <li class="nav-item dropdown">
-                <div class="dropdown">
-                    <button class="dropbtn nav-link"><b><u>Services</u></b></button>
-                    <div class="dropdown-content">
-                        <a href="#">Child Exams </a>
-                        <a href="#">Diabetic Exams</a>
-                        <a href="#">Adult & Senior Exams</a>
-                        <a href="#">Fittings</a>
-                        <a href="#">Medical Aid</a>
+                    <div class="dropdown">
+                        <button class="dropbtn nav-link"><b><u>Services</u></b></button>
+                        <div class="dropdown-content">
+                            <a href="#">Child Exams</a>
+                            <a href="#">Diabetic Exams</a>
+                            <a href="#">Adult & Senior Exams</a>
+                            <a href="#">Fittings</a>
+                            <a href="#">Medical Aid</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
                 <li class="nav-item dropdown">
                     <div class="dropdown">
                         <button class="dropbtn nav-link"><b><u>Shop</u></b></button>
@@ -55,8 +52,7 @@
                     </div>
                 </li>
                 <!-- End of Dropdown Services item -->
-
-                <li class="nav-item">
+                <li class="nav-item dropdown">
                     <div class="dropdown">
                         <button class="dropbtn nav-link"><b><u>Contact Us</u></b></button>
                         <div class="dropdown-content">
@@ -67,87 +63,49 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link"><b><u>Blog</u></b></a></li>
-                <li class="nav-item"><a href="#" class="nav-link "><b><u>Login/Register</u></b></a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><img src="images/icons8-fast-cart-24.png" alt="Cart" class="cart-icon"></a></li>
+                <li class="nav-item"><a href="#" class="nav-link active"><b><u>Blog</u></b></a></li>
             </ul>
         </nav>
     </div>
 
+    <div class="auth-cart">
+        <a href="#" class="nav-link active login-register"><b><u>Login/Register</u></b></a>
+        <a href="#" class="nav-link"><img src="images/icons8-fast-cart-24.png" alt="Cart" class="cart-icon"></a>
+    </div>
 </header>
-<div class="filler">
-
-</div>
-<hr>
 <br>
-<hr>
+<br><br><br><br><br><br><br><br>
 
+<!-- End Header Section -->
 
-
-
-<!-- Intro to the practice-->
-<div class="intro-container1">
-<div class="Intro">
-    <hr>
-    <div class="intro-img">
-        <img src="images/opening%20picture.jpg" alt="opening pic" class="intro-pic">
-    </div>
-    <div class ="intro-container">
-        <h2><b><u>Welcome to Tolksdorf Optometry</u></b></h2>
-        <br>
-        <p>
-            For over a decade, Tolksdorf Optometry has been Malvern's go-to practice for comprehensive eye care, particularly specializing in diabetic eye care. Founded by Mr. Jurgen Tolksdorf, the practice has built a reputation for excellence in contact lenses, pediatrics, and binocular vision.
-<br>
-            In 2019, Ms. Aalia, a graduate of the University of KwaZulu-Natal (UKZN) in Durban, took the helm after being mentored by Mr. Tolksdorf. Together, they boast over 30 years of combined experience. Ms. Aalia's passion for eye health, particularly for diabetic patients, led her to further specialize in this crucial area after her graduation in BSC Honors in Optometry in 2013.
-<br>
-            This commitment to diabetic eye care, combined with the existing expertise, ensures Tolksdorf Optometry remains at the forefront of vision care solutions in Durban.  They've also introduced popular brands like Ray Ban, PRADA, and Ted Baker, offering a stylish selection alongside their exceptional services.
-    </div>
-
-    </div>
-</div>
-<hr>
-
-<div class="featured">
-    <h2>Discover our range of prescription glasses and contact lenses!</h2>
-    <br>
-
-    <div class="images">
-        <div class="image">
-            <img src="images/Prescrption%20lenses.jpg" alt="Prescription Spectacles">
-            <p>Fashion Frames</p>
-            <nav>
-                <a href="#" class="nav-products">View</a>
-            </nav>
+<!-- Blog Management Section -->
+<div class="col-md-6">
+    <h3>Blog Management</h3>
+    <form id="blogForm">
+        <div class="form-group">
+            <label for="blogTitle">Blog Title</label>
+            <input type="text" class="form-control" id="blogTitle" placeholder="Enter blog title">
         </div>
-
-        <div class="image">
-            <img src="images/Best-Contact-Lenses.png" alt="Contact Lenses">
-            <p>Daily Disposables</p>
-            <nav>
-                <a href="#" class="nav-products">View</a>
-            </nav>
+        <div class="form-group">
+            <label for="blogContent">Blog Content</label>
+            <textarea class="form-control" id="blogContent" rows="5" placeholder="Enter blog content"></textarea>
         </div>
-    </div>
-
+        <div class="form-group">
+            <label for="blogImage">Blog Image</label>
+            <input type="file" class="form-control-file" id="blogImage">
+        </div>
+        <div class="form-group">
+            <label for="blogDocument">Blog Document (Word/PDF)</label>
+            <input type="file" class="form-control-file" id="blogDocument">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Blog Post</button>
+    </form>
 </div>
+<!-- End Blog Management Section -->
+</div>
+</section>
+<!-- End Product Management Section -->
 
-
-
-
-<hr>
-<br>
-<!-- End of Carousel -->
-
-    <!-- Services -->
-
-    <!-- Bookings-->
-
-
-    <!-- About us -->
-
-    <!-- Products -->
-
-    <!-- footer -->
 
 
 <div class="footer">
@@ -206,38 +164,42 @@
         <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
     </symbol>
     <symbol id="tiktok" viewBox="0 0 449.45 515.38">
-    <path fill-rule="nonzero" d="M382.31 103.3c-27.76-18.1-47.79-47.07-54.04-80.82-1.35-7.29-2.1-14.8-2.1-22.48h-88.6l-.15 355.09c-1.48 39.77-34.21 71.68-74.33 71.68-12.47 0-24.21-3.11-34.55-8.56-23.71-12.47-39.94-37.32-39.94-65.91 0-41.07 33.42-74.49 74.48-74.49 7.67 0 15.02 1.27 21.97 3.44V190.8c-7.2-.99-14.51-1.59-21.97-1.59C73.16 189.21 0 262.36 0 352.3c0 55.17 27.56 104 69.63 133.52 26.48 18.61 58.71 29.56 93.46 29.56 89.93 0 163.08-73.16 163.08-163.08V172.23c34.75 24.94 77.33 39.64 123.28 39.64v-88.61c-24.75 0-47.8-7.35-67.14-19.96z"/>
+        <path fill-rule="nonzero" d="M382.31 103.3c-27.76-18.1-47.79-47.07-54.04-80.82-1.35-7.29-2.1-14.8-2.1-22.48h-88.6l-.15 355.09c-1.48 39.77-34.21 71.68-74.33 71.68-12.47 0-24.21-3.11-34.55-8.56-23.71-12.47-39.94-37.32-39.94-65.91 0-41.07 33.42-74.49 74.48-74.49 7.67 0 15.02 1.27 21.97 3.44V190.8c-7.2-.99-14.51-1.59-21.97-1.59C73.16 189.21 0 262.36 0 352.3c0 55.17 27.56 104 69.63 133.52 26.48 18.61 58.71 29.56 93.46 29.56 89.93 0 163.08-73.16 163.08-163.08V172.23c34.75 24.94 77.33 39.64 123.28 39.64v-88.61c-24.75 0-47.8-7.35-67.14-19.96z"/>
     </symbol>
 </svg>
 
-    <!-- end of footer -->
+
+<!-- Scripts -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/myJs.js"></script>
 <script>
-let lastScrollTop = 0;
-const header = document.querySelector('header');
-let lastScrollDirection = 'down';
+    $(document).ready(function() {
+        $('#blogForm').on('submit', function(e) {
+            e.preventDefault(); // Prevent the form from submitting via the browser.
 
-window.addEventListener('scroll', function() {
-let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            var formData = new FormData(this); // Collect form data
 
-if (currentScroll > lastScrollTop && lastScrollDirection !== 'down') {
-// Scrolling down
-header.style.top = '-250px'; // Hide header
-lastScrollDirection = 'down';
-} else if (currentScroll < lastScrollTop && lastScrollDirection !== 'up') {
-// Scrolling up
-header.style.top = '0'; // Show header
-lastScrollDirection = 'up';
-}
-
-lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-}, false);
+            $.ajax({
+                url: 'process_blog_post.php', // URL to process the form data
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    alert('Blog post added successfully!');
+                    // Clear the form after successful submission
+                    $('#blogForm')[0].reset();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
+                    alert('Error adding blog post.');
+                }
+            });
+        });
+    });
 </script>
-
-<!-- Include JavaScript files -->
-    <script src="bootstrap.min.js"></script>
-    <script src="bootstrap.bundle.min.js.map"></script>
-
-
-
 </body>
+
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Items</title>
+</head>
+<body>
+<div id="itemContainer"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const items = JSON.parse(localStorage.getItem('items'));
+        const container = document.getElementById('itemContainer');
+
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.textContent = item.name; // Example property
+            container.appendChild(div);
+        });
+    });
+</script>
+</body>
+</html>

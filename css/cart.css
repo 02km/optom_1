@@ -1,0 +1,95 @@
+/* Reset Bootstrap default styles */
+/* You can selectively override Bootstrap styles here */
+
+/* Cart Styles */
+#cart-items {
+    list-style: none;
+    padding-left: 0;
+}
+
+#cart-items .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+#cart-items .list-group-item img {
+    max-width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+#cart-items .list-group-item .quantity-input {
+    width: 50px;
+}
+
+#cart-total {
+    font-size: 1.2em;
+}
+
+.promo-form {
+    margin-top: 20px;
+}
+
+#applied-promo-code {
+    margin-top: 10px;
+}
+
+#applied-promo-code span {
+    font-weight: bold;
+}
+
+/* Checkout Form Styles */
+.form-label {
+    font-weight: bold;
+}
+
+.promo-form .input-group {
+    width: 100%;
+}
+
+.form-check-label {
+    font-weight: normal;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-5,
+    .col-md-7 {
+        width: 100%;
+    }
+}
+
+/* Additional Styles */
+.checkout-header {
+    background-color: #f8f9fa;
+    padding: 10px; /* Adjusted padding to reduce height */
+    margin-bottom: 10px; /* Reduced margin below header */
+    border-radius: 5px;
+    margin-top: 0; /* Eliminate margin top */
+}
+
+.checkout-header h2 {
+    margin-bottom: 0;
+}
+
+.billing-address {
+    margin-top: 20px; /* Adjusted margin top for the billing section */
+}
+
+.invalid-feedback {
+    color: #dc3545;
+}

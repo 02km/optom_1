@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="css/loginorregister.css" rel="stylesheet">
+</head>
+<body>
+<form method="post" action="process_register.php">
+    <header>
+        <h1 class="brand">TOLKSDORF OPTOMETRY</h1>
+    </header>
+    <main>
+        <div class="wrapper">
+            <div class="card-inner">
+                <div class="card">
+                    <div class="title">Register</div>
+                    <p class="message">Sign up now and get full access to our app.</p>
+                    <div class="form-group">
+                        <label for="register-firstname">Name:</label>
+                        <input id="register-firstname" class="input" type="text" name="register-firstname" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-lastname">Surname:</label>
+                        <input id="register-lastname" class="input" type="text" name="register-lastname" placeholder="Your Surname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email:</label>
+                        <input id="register-email" class="input" type="email" name="register-email" placeholder="Your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password:</label>
+                        <input id="register-password" class="input" type="password" name="register-password" placeholder="Your password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirm Password:</label>
+                        <input id="register-confirm-password" class="input" type="password" name="register-confirm-password" placeholder="Confirm password" required>
+                    </div>
+                    <button type="submit" class="btn">Confirm!</button>
+                    <div class="description">
+                        <p>Already have an account? <a href="login.html">Login here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</form>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function(event) {
+            const firstNameInput = document.getElementById("register-firstname");
+            const lastNameInput = document.getElementById("register-lastname");
+            const emailInput = document.getElementById("register-email");
+            const passwordInput = document.getElementById("register-password");
+            const confirmPasswordInput = document.getElementById("register-confirm-password");
+
+            if (firstNameInput.value.trim() === "") {
+                alert("Please enter your first name.");
+                event.preventDefault();
+                return false;
+            }
+
+            // Perform similar checks for other fields...
+
+            // Check if passwords match
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                alert("Passwords do not match.");
+                event.preventDefault();
+                return false;
+            }
+
+            // Additional validation checks can be added here...
+
+            return true;
+        });
+    });
+</script>
+
+</body>
+</html>

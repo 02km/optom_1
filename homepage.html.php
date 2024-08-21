@@ -8,7 +8,7 @@
 
     <!-- Link to your external CSS file -->
     <link href="css/styles.css" rel="stylesheet"> <!--header and footer styles-->
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet"> 
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 

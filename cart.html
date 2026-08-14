@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <!-- Link to your external CSS file -->
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/cart.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -12,18 +11,15 @@
 <body>
 
 <header class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 border-bottom header-visible">
-    <!-- Logo and Header Text -->
     <div class="logo">
         <img src="images/Logo%20header.png" alt="Tolksdorf Optometry Logo" class="logo-img">
     </div>
 
-    <!-- Navigation -->
     <div class="nav-center">
         <nav class="nav-container">
             <ul class="nav">
                 <li class="nav-item"><a href="homepage.html.php" class="nav-link active" aria-current="page"><b>Home</b></a></li>
                 <li class="nav-item"><a href="about%20us.html" class="nav-link active"><b>About us</b></a></li>
-                <!-- Dropdown Services item -->
                 <li class="nav-item dropdown">
                     <div class="dropdown">
                         <button class="dropbtn nav-link"><b>Services</b></button>
@@ -45,7 +41,6 @@
                         </div>
                     </div>
                 </li>
-                <!-- End of Dropdown Services item -->
                 <li class="nav-item dropdown">
                     <div class="dropdown">
                         <button class="dropbtn nav-link"><b>Contact Us</b></button>
@@ -75,14 +70,12 @@
         </div>
 
         <div class="row g-5">
-            <!-- Cart Section -->
             <div class="col-md-5 col-lg-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Your cart</span>
                     <span class="badge bg-primary rounded-pill" id="cart-count">0</span>
                 </h4>
                 <ul class="list-group mb-3" id="cart-items">
-                    <!-- Cart items will be dynamically added here -->
                 </ul>
                 <div class="list-group-item d-flex justify-content-between">
                     <span>Total (R)</span>
@@ -99,7 +92,6 @@
                     </div>
                 </form>
             </div>
-            <!-- Billing Section -->
             <div class="col-md-7 col-lg-8">
                 <h4 class="mb-3">Billing address</h4>
                 <form class="needs-validation" novalidate>
@@ -201,6 +193,7 @@
         </div>
     </main>
 </div>
+
 <div class="footer">
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -216,10 +209,9 @@
 
 
            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <!-- Social Media Icons -->
-                <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/tolksdorf_optom?igsh=MTl6aGd2MzB6Zzljeg=="><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="https://www.facebook.com/share/YwUThYXZpDg9MMRd/?mibextid=qi2Omg"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="https://www.tiktok.com/@tolksdorf.optom?lang=en&is_from_webapp=1&sender_device=mobile&sender_web_id=7374813703915865606"><svg class="bi" width="24" height="24"><use xlink:href="#tiktok"/></svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/tolksdorf_optom?igsh=MTl6aGd2MzB6Zzljeg==" aria-label="Instagram"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="https://www.facebook.com/share/YwUThYXZpDg9MMRd/?mibextid=qi2Omg" aria-label="Facebook"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="https://www.tiktok.com/@tolksdorf.optom?lang=en&is_from_webapp=1&sender_device=mobile&sender_web_id=7374813703915865606" aria-label="TikTok"><svg class="bi" width="24" height="24"><use xlink:href="#tiktok"/></svg></a></li>
             </ul>
             <div class="map-container">
                 <a href="https://www.google.com/maps/place/TOLKSDORF+OPTOMETRIST/@-29.8815146,30.9190293,15z/data=!4m6!3m5!1s0x1ef7aabd8f8ec467:0x4c2b4e3e2295918d!8m2!3d-29.8815146!4d30.9190293!16s%2Fg%2F1pzrnv89q?entry=ttu">
@@ -231,7 +223,6 @@
 
     <div class="container">
         <footer class="py-3 my-4">
-            <!-- Navigation Links -->
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Privacy Policy</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Copy Right</a></li>
@@ -239,13 +230,12 @@
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Sign in</a></li>
             </ul>
-            <!-- Map Image -->
 
             <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
         </footer>
     </div>
 </div>
-<!-- Include Bootstrap Icons SVG -->
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="bootstrap" viewBox="0 0 118 94">
         <title>Footer</title>
@@ -261,23 +251,10 @@
     </symbol>
 </svg>
 
-<script src="js/bootstrap.bundle.min.js"></script>
+<script src="bootstrap.bundle.min.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Remove the loading screen after everything is loaded
-        var loader = document.getElementById('loader');
-        setTimeout(function() {
-            loader.style.display = 'none';
-        }, 500); // Adjust timeout as needed
-
-        const products = document.querySelectorAll('.product-grid-item');
-        let maxHeight = Math.max(...Array.from(products, product => product.offsetHeight));
-
-        products.forEach(product => {
-            product.style.height = `${maxHeight}px`;
-        });
-
         var cartItemsContainer = document.getElementById('cart-items');
         var cartCount = document.getElementById('cart-count');
         var cartTotal = document.getElementById('cart-total');
@@ -308,24 +285,54 @@
                     var li = document.createElement('li');
                     li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
 
-                    li.innerHTML = `
-                        <div class="d-flex align-items-center">
-                            <img src="${item.imageUrl}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
-                            <div>
-                                <h6 class="my-0">${item.name}</h6>
-                                <small class="text-body-secondary">${item.brand}</small>
-                                <small class="text-body-secondary">${item.groupName || ''}</small>
-                            </div>
-                        </div>
-                        <span class="text-body-secondary">R ${item.price} x
-                            <input type="number" class="quantity-input" value="${item.quantity}" min="0" data-index="${index}" style="width: 50px;">
-                        </span>`;
+                    // F-08: XSS-safe rendering — textContent + property assignment, no innerHTML
+                    var mainDiv = document.createElement('div');
+                    mainDiv.classList.add('d-flex', 'align-items-center');
+
+                    var img = document.createElement('img');
+                    img.src = item.imageUrl || '';
+                    img.alt = item.name;
+                    img.style.width = '50px';
+                    img.style.height = 'auto';
+                    img.style.marginRight = '10px';
+                    mainDiv.appendChild(img);
+
+                    var textDiv = document.createElement('div');
+                    var h6 = document.createElement('h6');
+                    h6.classList.add('my-0');
+                    h6.textContent = item.name;
+                    textDiv.appendChild(h6);
+                    var smallBrand = document.createElement('small');
+                    smallBrand.classList.add('text-body-secondary');
+                    smallBrand.textContent = item.brand;
+                    textDiv.appendChild(smallBrand);
+                    if (item.groupName) {
+                        var smallGroup = document.createElement('small');
+                        smallGroup.classList.add('text-body-secondary');
+                        smallGroup.textContent = item.groupName;
+                        textDiv.appendChild(smallGroup);
+                    }
+                    mainDiv.appendChild(textDiv);
+                    li.appendChild(mainDiv);
+
+                    var span = document.createElement('span');
+                    span.classList.add('text-body-secondary');
+                    span.textContent = 'R ' + item.price + ' x ';
+                    var input = document.createElement('input');
+                    input.type = 'number';
+                    input.classList.add('quantity-input');
+                    input.value = item.quantity;
+                    input.min = '0';
+                    input.setAttribute('data-index', index);
+                    input.style.width = '50px';
+                    span.appendChild(input);
+                    li.appendChild(span);
 
                     cartItemsContainer.appendChild(li);
                 }
             });
 
-            cartCount.textContent = cart.reduce((acc, item) => acc + (item.quantity > 0 ? 1 : 0), 0);
+            cartCount.textContent = cart.reduce(function(acc, item) { return acc + (item.quantity > 0 ? 1 : 0); }, 0);
             cartTotal.textContent = total.toFixed(2);
         }
 
@@ -356,7 +363,7 @@
         function removeItemFromCart(index) {
             var cart = JSON.parse(localStorage.getItem('cart')) || [];
             if (cart[index]) {
-                cart[index].quantity = 0; // Set quantity to 0 to remove the item
+                cart[index].quantity = 0;
                 localStorage.setItem('cart', JSON.stringify(cart));
                 loadCart();
             }
@@ -399,6 +406,18 @@
             }
         });
 
+        // F-12: Equal-height on window.load (after images), using rAF
+        window.addEventListener('load', function() {
+            requestAnimationFrame(function() {
+                var products = document.querySelectorAll('.product-grid-item');
+                if (products.length === 0) return;
+                var maxHeight = Math.max.apply(null, Array.from(products, function(p) { return p.offsetHeight; }));
+                products.forEach(function(product) {
+                    product.style.height = maxHeight + 'px';
+                });
+            });
+        });
+
         // Initial load of cart items
         loadCart();
 
@@ -411,40 +430,30 @@
                 var productName = product.querySelector('h4').textContent;
                 var productBrand = product.querySelector('h6').textContent;
                 var productPrice = product.querySelector('h6:nth-child(4)').textContent.replace('Price: R ', '');
-                var productImage = product.querySelector('img').src; // Get the product image URL
+                var productImage = product.querySelector('img').src;
 
                 var cartItem = {
                     name: productName,
                     brand: productBrand,
                     price: parseFloat(productPrice),
-                    imageUrl: productImage, // Include the image URL
+                    imageUrl: productImage,
                     quantity: 1
                 };
 
-                // Get the cart items from local storage
                 var cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-                // Check if the item already exists in the cart
-                var existingItem = cart.find(item => item.name === cartItem.name && item.brand === cartItem.brand);
+                var existingItem = cart.find(function(item) { return item.name === cartItem.name && item.brand === cartItem.brand; });
 
                 if (existingItem) {
-                    // If the item exists, increase the quantity
                     existingItem.quantity += 1;
                 } else {
-                    // Otherwise, add the new item to the cart
                     cart.push(cartItem);
                 }
 
-                // Save the updated cart to local storage
                 localStorage.setItem('cart', JSON.stringify(cart));
-
                 alert(productName + " has been added to your cart!");
             });
         });
     });
 </script>
-
-
-
 </body>
 </html>

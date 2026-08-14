@@ -1,14 +1,10 @@
 <?php
 // process_login.php
 
-// Database connection details
-$servername = "localhost";
-$username = "tolksdorf";
-$password = "tolks2024";
-$dbname = "tolksdorf";
+ob_start();
+session_start();
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+require_once 'config.php';
 
 // Check connection
 if ($conn->connect_error) {
@@ -30,18 +26,22 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     if (password_verify($password, $row['password'])) {
         // Password is correct, log the user in
-        session_start();
         $_SESSION['loggedin'] = true;
         $_SESSION['email'] = $email;
-        header("Location:  homepage.html.php"); // Redirect to dashboard or home page
+        header("Location: homepage.html.php");
         exit();
     } else {
-        echo "Invalid password.";
+        echo "Invalid email or password.";
+        ob_end_flush();
+        exit();
     }
 } else {
-    echo "No user found with that email.";
+    echo "Invalid email or password.";
+    ob_end_flush();
+    exit();
 }
 
 $stmt->close();
 $conn->close();
 ?>
+<?php

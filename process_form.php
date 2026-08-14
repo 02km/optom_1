@@ -12,6 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sameAddress = isset($_POST['same-address']) ? "Yes" : "No";
     $saveInfo = isset($_POST['save-info']) ? "Yes" : "No";
 
+    // Validate email before using in mail headers
+    $cleanEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (!$cleanEmail) {
+        echo "Invalid email address.";
+        exit();
+    }
+    // Strip newlines to prevent header injection
+    $cleanEmail = str_replace(array("\r", "\n", "%0a", "%0d"), '', $cleanEmail);
+
     // Example: Send email to shop
     $shopEmail = "mokaka821@gmail.com";
     $subject = "New Order - Customer Information";
@@ -26,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mail($shopEmail, $subject, $message);
 
     // Example: Send confirmation email to customer
-    $customerEmail = $email;
+    $customerEmail = $cleanEmail;
     $subject = "Order Confirmation";
     $message = "Dear $firstName,\n\n";
     $message .= "Thank you for your order!\n";
@@ -40,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Redirect back to checkout page or show a confirmation message
     header("Location: checkout_confirmation.php");
-    exit();
+    exit(); // Always exit after header redirect
 }
 
 ?>

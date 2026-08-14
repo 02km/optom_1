@@ -6,7 +6,7 @@
     <title>Products</title>
 
     <!-- Link to your external CSS files -->
-    <link href="css/styles.css" rel="stylesheet"> <!--header and footer styles-->
+    <link href="css/styles.css" rel="stylesheet">
     <link href="get_products.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -17,11 +17,10 @@
     <!-- Inline JavaScript for modal and image handling -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Remove the loading screen after everything is loaded
             var loader = document.getElementById('loader');
             setTimeout(function() {
                 loader.style.display = 'none';
-            }, 500); // Adjust timeout as needed
+            }, 500);
         });
 
         function openModal(imageUrl) {
@@ -50,18 +49,15 @@
 <body>
 
 <header class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 border-bottom header-visible">
-    <!-- Logo and Header Text -->
     <div class="logo">
         <img src="images/Logo%20header.png" alt="Tolksdorf Optometry Logo" class="logo-img">
     </div>
 
-    <!-- Navigation -->
     <div class="nav-center">
         <nav class="nav-container">
             <ul class="nav">
                 <li class="nav-item"><a href="homepage.html.php" class="nav-link active" aria-current="page"><b><u>Home</u></b></a></li>
                 <li class="nav-item"><a href="about%20us.html" class="nav-link active"><b><u>About us</u></b></a></li>
-                <!-- Dropdown Services item -->
                 <li class="nav-item dropdown">
                     <div class="dropdown">
                         <button class="dropbtn nav-link"><b><u>Services</u></b></button>
@@ -83,7 +79,6 @@
                         </div>
                     </div>
                 </li>
-                <!-- End of Dropdown Services item -->
                 <li class="nav-item dropdown">
                     <div class="dropdown">
                         <button class="dropbtn nav-link"><b><u>Contact Us</u></b></button>
@@ -107,14 +102,12 @@
 </header>
 
 <div id="loader" class="loading...">
-    <!-- Your loading GIF or animation goes here -->
     <img src="images/eye_layers.gif" alt="Loading...">
 </div>
-<!-- Filter and Sort Dropdowns -->
+
 <div class="filters">
     <label for="filter">Filter by Brand:</label>
     <select id="filter" onchange="filterByBrand(this.value)">
-
         <option value="all">Filter</option>
         <option value="all">All Brands</option>
         <option value="ray ban">Ray Ban</option>
@@ -126,7 +119,6 @@
         <option value="marc jacobs">Marc Jacobs</option>
         <option value="kate spade">Kate Spade</option>
         <option value="vogue">Vogue</option>
-        <!-- Add more options as needed -->
     </select>
 
     <label for="sort">Sort by Price:</label>
@@ -134,94 +126,107 @@
         <option value="selling_price" data-order="reset">Sort</option>
         <option value="selling_price" data-order="asc">Price (Low to High)</option>
         <option value="selling_price" data-order="desc">Price (High to Low)</option>
-        <!-- Add more sorting options as needed -->
     </select>
 </div>
+
 <main>
     <div id="products">
         <?php
         include('config.php');
 
-    // Get brand filter from the query parameter
-    $brandFilter = isset($_GET['brand']) ? $_GET['brand'] : 'all';
+        // Get brand filter from the query parameter
+        $brandFilter = isset($_GET['brand']) ? $_GET['brand'] : 'all';
 
-    // Get the group filter from the query parameter
-    $groupFilter = isset($_GET['group']) ? $_GET['group'] : 'all';
+        // Get the group filter from the query parameter
+        $groupFilter = isset($_GET['group']) ? $_GET['group'] : 'all';
 
-    // Determine sorting parameters
-    $sortField = isset($_GET['sort']) ? $_GET['sort'] : 'id'; // Default to sort by ID
-    $sortOrder = isset($_GET['order']) && $_GET['order'] === 'desc' ? 'DESC' : 'ASC'; // Default to ascending
+        // Determine sorting parameters
+        $sortField = isset($_GET['sort']) ? $_GET['sort'] : 'id';
+        $sortOrder = isset($_GET['order']) && $_GET['order'] === 'desc' ? 'DESC' : 'ASC';
 
-    // SQL query to retrieve products
-    $sql = "SELECT id, images_url, name, brand, group_name, selling_price FROM products";
+        // SQL query to retrieve products
+        $sql = "SELECT id, images_url, name, brand, group_name, selling_price FROM products";
 
-    // Adjust the SQL query to filter by the selected brand and group
-    $conditions = [];
-    if ($brandFilter !== 'all' && !empty($brandFilter)) {
-        $conditions[] = "brand = '" . $conn->real_escape_string($brandFilter) . "'";
-    }
-    if ($groupFilter !== 'all' && !empty($groupFilter)) {
-        if ($groupFilter === 'ladies') {
-            $conditions[] = "group_name LIKE 'ladies%'";
-        } elseif ($groupFilter === 'men') {
-            $conditions[] = "group_name LIKE 'mens%'";
+        // Build conditions using prepared statements
+        $conditions = [];
+        $params = [];
+        $types = '';
+
+        if ($brandFilter !== 'all' && !empty($brandFilter)) {
+            $conditions[] = "brand = ?";
+            $params[] = $brandFilter;
+            $types .= 's';
         }
-    }
-    if (!empty($conditions)) {
-        $sql .= " WHERE " . implode(" AND ", $conditions);
-    }
-
-    // Add sorting to SQL query
-    // Ensure $sortField is a valid column name in your products table
-    $validSortFields = ['id', 'selling_price']; // List of valid sort fields
-    if (in_array($sortField, $validSortFields)) {
-        $sql .= " ORDER BY $sortField $sortOrder";
-    } else {
-        // Default to sort by 'id' if $sortField is invalid
-        $sql .= " ORDER BY id ASC";
-    }
-
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        echo '<div class="product-grid">'; // Start of grid container
-        while($row = $result->fetch_assoc()) {
-            echo '<div class="product-grid-item">';
-            $image_path = '/optom_1/' . $row['images_url'];
-            $image_path = str_replace(' ', '%20', $image_path); // Encode spaces in the URL
-
-            echo '<div class="image-box">';
-            echo '<img src="' . $image_path . '" alt="Image" onclick="openModal(\'' . $image_path . '\')">';
-            echo '</div>';
-
-            echo '<div class="product-details">';
-            echo '<h4>' . htmlspecialchars($row['name']) . '</h4>'; // Product Name
-            echo '<h6>' . htmlspecialchars($row['brand']) . '</h6>'; // Brand
-            echo '<h8>' . htmlspecialchars($row['group_name']) . '</h8>'; // Group Name
-            echo '<h6><b>R ' . htmlspecialchars($row['selling_price']) . '</b></h6>'; // Price
-            echo '<button id="addToCartBtn">Add to Cart</button>'; // To Cart Button
-            echo '</div>';
-
-            echo '</div>';
+        if ($groupFilter !== 'all' && !empty($groupFilter)) {
+            if ($groupFilter === 'ladies') {
+                $conditions[] = "group_name LIKE ?";
+                $params[] = 'ladies%';
+                $types .= 's';
+            } elseif ($groupFilter === 'men') {
+                $conditions[] = "group_name LIKE ?";
+                $params[] = 'mens%';
+                $types .= 's';
+            }
         }
-        echo '</div>'; // End of grid container
-    } else {
-        echo "No products found.";
-    }
+        if (!empty($conditions)) {
+            $sql .= " WHERE " . implode(" AND ", $conditions);
+        }
 
-    $conn->close();
-    ?>
+        // Add sorting to SQL query
+        $validSortFields = ['id', 'selling_price'];
+        if (in_array($sortField, $validSortFields)) {
+            $sql .= " ORDER BY $sortField $sortOrder";
+        } else {
+            $sql .= " ORDER BY id ASC";
+        }
 
+        // Prepare and execute the statement
+        $stmt = $conn->prepare($sql);
+        if ($params) {
+            $stmt->bind_param($types, ...$params);
+        }
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        if ($result->num_rows > 0) {
+            echo '<div class="product-grid">';
+            while($row = $result->fetch_assoc()) {
+                echo '<div class="product-grid-item">';
+                $image_path = '/optom_1/' . $row['images_url'];
+                $image_path = str_replace(' ', '%20', $image_path);
 
+                echo '<div class="image-box">';
+                // XSS hardening: use data attribute + JS event listener instead of inline onclick
+                echo '<img src="' . htmlspecialchars($image_path) . '" alt="Image" data-image="' . htmlspecialchars($image_path) . '" class="product-image">';
+                echo '</div>';
+
+                echo '<div class="product-details">';
+                echo '<h4>' . htmlspecialchars($row['name']) . '</h4>';
+                echo '<h6>' . htmlspecialchars($row['brand']) . '</h6>';
+                echo '<p class="group-name">' . htmlspecialchars($row['group_name']) . '</p>';
+                echo '<h6><b>R ' . htmlspecialchars($row['selling_price']) . '</b></h6>';
+                echo '<button id="addToCartBtn">Add to Cart</button>';
+                echo '</div>';
+
+                echo '</div>';
+            }
+            echo '</div>';
+        } else {
+            echo "No products found.";
+        }
+
+        $stmt->close();
+        $conn->close();
+        ?>
 
     </div>
 </main>
-<!-- Modal for enlarged image view -->
+
 <div id="imageModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img class="modal-content" id="modalImage">
 </div>
+
 <div class="footer">
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -234,12 +239,10 @@
                 </a>
             </div>
 
-
            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <!-- Social Media Icons -->
-                <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/tolksdorf_optom?igsh=MTl6aGd2MzB6Zzljeg=="><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="https://www.facebook.com/share/YwUThYXZpDg9MMRd/?mibextid=qi2Omg"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="https://www.tiktok.com/@tolksdorf.optom?lang=en&is_from_webapp=1&sender_device=mobile&sender_web_id=7374813703915865606"><svg class="bi" width="24" height="24"><use xlink:href="#tiktok"/></svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/tolksdorf_optom?igsh=MTl6aGd2MzB6Zzljeg==" aria-label="Instagram"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="https://www.facebook.com/share/YwUThYXZpDg9MMRd/?mibextid=qi2Omg" aria-label="Facebook"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="https://www.tiktok.com/@tolksdorf.optom?lang=en&is_from_webapp=1&sender_device=mobile&sender_web_id=7374813703915865606" aria-label="TikTok"><svg class="bi" width="24" height="24"><use xlink:href="#tiktok"/></svg></a></li>
             </ul>
             <div class="map-container">
                 <a href="https://www.google.com/maps/place/TOLKSDORF+OPTOMETRIST/@-29.8815146,30.9190293,15z/data=!4m6!3m5!1s0x1ef7aabd8f8ec467:0x4c2b4e3e2295918d!8m2!3d-29.8815146!4d30.9190293!16s%2Fg%2F1pzrnv89q?entry=ttu">
@@ -251,7 +254,6 @@
 
     <div class="container">
         <footer class="py-3 my-4">
-            <!-- Navigation Links -->
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Privacy Policy</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Copy Right</a></li>
@@ -259,13 +261,12 @@
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Sign in</a></li>
             </ul>
-            <!-- Map Image -->
 
             <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
         </footer>
     </div>
 </div>
-<!-- Include Bootstrap Icons SVG -->
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="bootstrap" viewBox="0 0 118 94">
         <title>Footer</title>
@@ -280,69 +281,63 @@
         <path fill-rule="nonzero" d="M382.31 103.3c-27.76-18.1-47.79-47.07-54.04-80.82-1.35-7.29-2.1-14.8-2.1-22.48h-88.6l-.15 355.09c-1.48 39.77-34.21 71.68-74.33 71.68-12.47 0-24.21-3.11-34.55-8.56-23.71-12.47-39.94-37.32-39.94-65.91 0-41.07 33.42-74.49 74.48-74.49 7.67 0 15.02 1.27 21.97 3.44V190.8c-7.2-.99-14.51-1.59-21.97-1.59C73.16 189.21 0 262.36 0 352.3c0 55.17 27.56 104 69.63 133.52 26.48 18.61 58.71 29.56 93.46 29.56 89.93 0 163.08-73.16 163.08-163.08V172.23c34.75 24.94 77.33 39.64 123.28 39.64v-88.61c-24.75 0-47.8-7.35-67.14-19.96z"/>
     </symbol>
 </svg>
-<!-- JavaScript to handle loader and product grid height adjustment -->
+
 <script>
+        // F-08: XSS-safe modal via data attributes + event listeners
         document.addEventListener('DOMContentLoaded', function() {
-        // Remove the loading screen after everything is loaded
-        var loader = document.getElementById('loader');
-        setTimeout(function() {
-        loader.style.display = 'none';
-    }, 500); // Adjust timeout as needed
-    });
+            document.querySelectorAll('.product-image').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    openModal(this.getAttribute('data-image'));
+                });
+            });
+        });
 
+        // F-12: Equal-height on window.load (after images)
+        window.addEventListener('load', function() {
+            requestAnimationFrame(function() {
+                var products = document.querySelectorAll('.product-grid-item');
+                if (products.length === 0) return;
+                var maxHeight = Math.max.apply(null, Array.from(products, function(p) { return p.offsetHeight; }));
+                products.forEach(function(product) {
+                    product.style.height = maxHeight + 'px';
+                });
+            });
+        });
+
+        // Add to cart functionality
         document.addEventListener('DOMContentLoaded', function() {
-        const products = document.querySelectorAll('.product-grid-item');
-        let maxHeight = Math.max(...Array.from(products, product => product.offsetHeight));
+            var addToCartButtons = document.querySelectorAll('#addToCartBtn');
 
-        products.forEach(product => {
-        product.style.height = `${maxHeight}px`;
-    });
-    });
+            addToCartButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var product = this.closest('.product-grid-item');
+                    var productName = product.querySelector('h4').textContent;
+                    var productBrand = product.querySelector('h6').textContent;
+                    var productPrice = product.querySelector('h6:nth-child(4)').textContent.replace('Price: R ', '');
+                    var productImage = product.querySelector('img').src;
 
-        document.addEventListener('DOMContentLoaded', function() {
-        var addToCartButtons = document.querySelectorAll('#addToCartBtn');
+                    var cartItem = {
+                        name: productName,
+                        brand: productBrand,
+                        price: parseFloat(productPrice),
+                        imageUrl: productImage,
+                        quantity: 1
+                    };
 
-        addToCartButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-        var product = this.closest('.product-grid-item');
-        var productName = product.querySelector('h4').textContent;
-        var productBrand = product.querySelector('h6').textContent;
-        var productPrice = product.querySelector('h6:nth-child(4)').textContent.replace('Price: R ', '');
-        var productImage = product.querySelector('img').src; // Get the product image URL
+                    var cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    var existingItem = cart.find(function(item) { return item.name === cartItem.name && item.brand === cartItem.brand; });
 
-        var cartItem = {
-        name: productName,
-        brand: productBrand,
-        price: parseFloat(productPrice),
-        imageUrl: productImage, // Include the image URL
-        quantity: 1
-    };
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push(cartItem);
+                    }
 
-        // Get the cart items from local storage
-        var cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Check if the item already exists in the cart
-        var existingItem = cart.find(item => item.name === cartItem.name && item.brand === cartItem.brand);
-
-        if (existingItem) {
-        // If the item exists, increase the quantity
-        existingItem.quantity += 1;
-    } else {
-        // Otherwise, add the new item to the cart
-        cart.push(cartItem);
-    }
-
-        // Save the updated cart to local storage
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        alert(productName + " has been added to your cart!");
-    });
-    });
-    });
-
-
-
-
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    alert(productName + " has been added to your cart!");
+                });
+            });
+        });
 </script>
 </body>
 </html>
